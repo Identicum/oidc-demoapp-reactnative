@@ -8,7 +8,7 @@ This demo application shows how to do the federation process with an OAuth provi
 ## 1. Install
 
 ```bash
-git clone https://github.com/embesozzi/oidc-demoapp-reactnative.git
+git clone https://github.com/Identicum/oidc-demoapp-reactnative.git
 cd oidc-demoapp-reactnative
 yarn install
 ```
