@@ -80,12 +80,12 @@ This example uses the following libraries:
 
 ### Android
 
-<img src="https://github.com/Identicum/oidc-demoapp-reactnative/blob/main/assets/screenshot_android_app-login.png" width="400" height="640" />
+<img src="https://github.com/Identicum/oidc-demoapp-reactnative/blob/main/assets/screenshot_android_app-login.png" width="240" height="440" />
 
-<img src="https://github.com/Identicum/oidc-demoapp-reactnative/blob/main/assets/screenshot_android_idp-login.png" width="400" height="640" />
+<img src="https://github.com/Identicum/oidc-demoapp-reactnative/blob/main/assets/screenshot_android_idp-login.png"  width="240" height="440" />
 
-<img src="https://github.com/Identicum/oidc-demoapp-reactnative/blob/main/assets/screenshot_android_idp-consent.png" width="400" height="640" />
+<img src="https://github.com/Identicum/oidc-demoapp-reactnative/blob/main/assets/screenshot_android_idp-consent.png"  width="240" height="440" />
 
-<img src="https://github.com/Identicum/oidc-demoapp-reactnative/blob/main/assets/screenshot_android_app-userinfo.png" width="400" height="640" />
+<img src="https://github.com/Identicum/oidc-demoapp-reactnative/blob/main/assets/screenshot_android_app-userinfo.png"  width="240" height="440" />
 
 
