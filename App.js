@@ -24,10 +24,11 @@ const configs = {
   }
 };  
 
+
 class App extends Component {
       constructor(props) {
         super(props);
-        this.state = { accessToken: '', idToken : '', viewOffset : 'bottom' };
+        this.state = { accessToken: '', idToken : '' };
       }
       decodeJwt = (idToken) => {
         console.log("____ Decoding ID token: " + this.state.idToken)
@@ -35,7 +36,7 @@ class App extends Component {
         const base64 = jwtBody.replace('-', '+').replace('_', '/');
         const decodedJwt = Buffer.from(base64, 'base64');
         console.log("____ Decoded ID token: " + decodedJwt)
-        return JSON.stringify(JSON.parse(decodedJwt));
+        return JSON.parse(decodedJwt);
       }
       _onLogin = () => { 
         console.log("___ Login...")
@@ -48,11 +49,7 @@ class App extends Component {
           })
           .catch(error => console.log(error));
        };
-       _onScroll = (event) => {
-          const currentViewOffset = event.nativeEvent.contentOffset.y > 20 ?  "top"  :  "bottom";
-          if(this.state.viewOffset != currentViewOffset)
-             this.setState( { viewOffset : currentViewOffset } );
-       };
+
       _onLogout = () => {
         console.log("___ Logout...")
         // TODO: Handling revoke token
@@ -63,25 +60,33 @@ class App extends Component {
       };
       render() {
         let loggedIn = this.state.accessToken == '' ? false : true;
-        console.log("___ Is User logged in: " + loggedIn );
+        let decodedJwt;
+        if(loggedIn)
+          decodedJwt = this.decodeJwt(this.state.idToken);
+        console.log("___ Is User logged in : " + loggedIn );
         return (
                 <View style={styles.container}>
+                  <View>
+                    <Text style={styles.headerText}>{ loggedIn ? "User: " +  decodedJwt.sub : "Welcome" } </Text>
+                  </View>
+                  <View style={styles.content}>
                 { loggedIn ? (
-                  <ScrollView contentContainerStyle={{ paddingTop: 30, flexGrow: 1, justifyContent: 'center' , width: "100%"}} onScroll={this._onScroll}>
-                    <View style = {[{ width: "90%"}]}>
+                  <ScrollView contentContainerStyle={{ paddingTop: 10, flexGrow: 1, justifyContent: 'center' , width: "100%"}}>
+                    <View style = {[{ width: "90%" , marginBottom : 50}]}>
                             <View >
                               <Text style={styles.fieldHeader}>Access Token</Text>
                               <Text style={styles.fieldValue} selectable>{this.state.accessToken}</Text>
-                              <Text style={styles.fieldHeader}>ID Token (decoded)</Text>
-                              <Text style={styles.fieldValue} selectable> {this.decodeJwt(this.state.idToken)}</Text>
+                              <Text style={styles.fieldHeader}>ID Token </Text>
+                              <Text style={styles.fieldValue} selectable> {JSON.stringify(decodedJwt)}</Text>
                               <Text style={styles.fieldHeader}>ID Token (JWT)</Text>
                               <Text style={styles.fieldValue} selectable>{this.state.idToken}</Text>
                             </View> 
                     </View>
                 </ScrollView>
                  ): <View></View>}
-              <View style={ loggedIn ? ( this.state.viewOffset == "bottom" ? styles.bottomView : styles.topView ): [{ width: "90%"}] } >
-                  <Button onPress = { loggedIn ? this._onLogout : this._onLogin } title = { loggedIn ? 'Log Out' : 'Log In' } />
+              <View style={ loggedIn ? styles.bottomView : [{ width: "90%"}] } >
+                  <Button  onPress = { loggedIn ? this._onLogout : this._onLogin } title = { loggedIn ? 'Log Out' : 'Log In' } />
+              </View>
               </View>
             </View>
         );
@@ -91,20 +96,25 @@ class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
      },
+     content: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+     },
+     headerText: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#333',
+        textAlign: 'center',
+        marginTop: 35
+      },
     fieldHeader : {
       alignSelf:'center',
-      fontSize:15,
+      fontSize: 20,
       justifyContent:'center',
       alignItems:'center'
-    },
-    topView:{
-      width: '90%', 
-      position: 'absolute',
-      top: 20
     },
     bottomView:{
       width: '90%', 
@@ -113,7 +123,8 @@ const styles = StyleSheet.create({
     },
     fieldValue : {
       color: '#0071BC',
-      margin: 10
+      fontSize: 15,
+      margin: 20
     }
 });
 
