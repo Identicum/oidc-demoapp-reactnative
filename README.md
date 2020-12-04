@@ -76,3 +76,15 @@ This example uses the following libraries:
 ## Troubleshooting
 
 
+## Screenshots
+
+### Android
+
+![App login](assets/screenshot_android_app-login.png)
+
+![App idp login](assets/screenshot_android_idp-login.png)
+
+![App idp consent](assets/screenshot_android_idp-consent.png)
+
+![App user info](assets/screenshot_android_app-userinfo.png)
+
