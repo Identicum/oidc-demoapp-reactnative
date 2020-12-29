@@ -64,7 +64,7 @@ To run the app on Android, you'll have to an Android Virtual Device (AVD). Open 
 To create a new AVD, navigate to **Tools** > **Android** > **AVD Manager**. Create a new Virtual Device and run it. I recommend using Pixel 2 with `Android API 27 x86`.
  
 ```bash
-npm run android
+npm run android or react-native run-android
 ```
 
 ## Links
@@ -74,6 +74,8 @@ This example uses the following libraries:
 * [React Native App Auth](https://github.com/FormidableLabs/react-native-app-auth)
 
 ## Troubleshooting
+
+* [Android Tips](Android.md)
 
 
 ## Screenshots
