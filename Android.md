@@ -1,6 +1,6 @@
 # Android Tips
 
-## 1. Add AM DNS resolution to emulator's host file
+## 1. Add AM DNS resolution to AVD host file
 Add the enviroment variables ```ANDROID_HOME```, ```ANDROID_SDK_ROOT``` and ```PATH``` pointing to the SDK binaries, for example:
 
 ```bash
@@ -24,7 +24,7 @@ echo "<am-ip>    <am-dns>" >> /tmp/hosts
 adb push /tmp/hosts /etc/hosts
 ```
 
-## 2. Add self-signed certificate to Android emulator
+## 2. Add self-signed certificate to AVD
 
 - 2.1 Copy the self-signed certificate to the path ```oidc-demoapp-reactive/android/app/src/main/res/raw```, for example:
 ```bash
@@ -53,4 +53,13 @@ cp /tmp/my_ca /GITHUB_HOME/oidc-demoapp-reactive/android/app/src/main/res/raw
       android:networkSecurityConfig="@xml/network_security_config"
       ...
 ```
+
+## 3. Set VERBOSE log in AppAuth
+
+```
+adb shell setprop log.tag.AppAuth VERBOSE
+adb logcat
+// Restart app
+```
+
 
