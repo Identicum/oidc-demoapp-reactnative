@@ -54,7 +54,7 @@ cp /tmp/my_ca /GITHUB_HOME/oidc-demoapp-reactive/android/app/src/main/res/raw
       ...
 ```
 
-## 3. Set VERBOSE log in AppAuth
+## 3. Set VERBOSE log level in AppAuth Library
 
 ```
 adb shell setprop log.tag.AppAuth VERBOSE
