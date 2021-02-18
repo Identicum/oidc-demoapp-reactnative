@@ -62,4 +62,10 @@ adb logcat
 // Restart app
 ```
 
+## 4. Add DNS server for AVD
+```
+// Add primary DNS server for Google
+emulator -avd <device-name> -dns-server 8.8.8.8
+```
+
 
