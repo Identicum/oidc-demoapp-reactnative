@@ -12,7 +12,7 @@
   "dependencies": {
     "buffer": "^6.0.3",
     "react": "16.13.1",
-    "react-native": "0.63.4",
+    "react-native": "0.70.3",
     "react-native-app-auth": "^6.0.1"
   },
   "devDependencies": {
